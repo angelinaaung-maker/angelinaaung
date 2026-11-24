@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angelina Aung, Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#13233A; --navy-2:#1D3150; --pale:#DCEAF7; --blue:#2F6098;
+  --paper:#FBFAF7; --ink:#15181C; --muted:#5B6878; --line:#DCE3EB;
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+nav .me{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:-.01em}
+nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover{color:var(--blue)}
+
+/* hero */
+header.hero{background:var(--navy);color:#F2F5F8;padding:92px 0 80px}
+header.hero .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8FB0D2;margin-bottom:20px}
+header.hero h1{font-family:var(--serif);font-size:clamp(38px,6vw,62px);line-height:1.08;font-weight:600;letter-spacing:-.02em;max-width:17ch}
+header.hero p.lede{margin-top:22px;font-size:19px;color:#BACBDC;max-width:56ch}
+header.hero .meta{margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;font-size:15px;color:#8FB0D2}
+header.hero .meta a{color:#BACBDC}
+
+/* sections */
+section.project{padding:78px 0 10px;border-top:1px solid var(--line)}
+section.project:first-of-type{border-top:none}
+.ptag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500}
+h2{font-family:var(--serif);font-size:clamp(30px,4.4vw,42px);line-height:1.12;font-weight:600;letter-spacing:-.02em;margin:12px 0 10px}
+.tagline{font-size:18px;color:var(--muted);max-width:60ch}
+h3{font-family:var(--serif);font-size:22px;font-weight:600;margin:46px 0 12px;letter-spacing:-.01em}
+p{max-width:68ch}
+p + p{margin-top:12px}
+
+/* image slots */
+.slot{border:2px dashed #B8C6D6;border-radius:10px;background:#EEF3F8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#6D8099;font-size:14px;text-align:center;padding:20px}
+.slot .big{font-size:15px;font-weight:600;color:#4E6684}
+.slot.hero-slot{aspect-ratio:16/9;margin:30px 0 6px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:18px}
+.grid3 .slot{aspect-ratio:4/3}
+/* --- swap a dashed box for a real photo: use these two classes --- */
+img.hero-shot{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin:30px 0 6px;background:#F2F4F6}
+img.shot{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--line);background:#F2F4F6}
+img.shot.fit{aspect-ratio:auto;object-fit:contain}
+.grid3 figure{margin:0}
+.grid3 figcaption{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.45}
+.cap{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* upcoming work cards */
+.nextgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:30px}
+.nextcard{border:1px solid var(--line);border-radius:12px;padding:24px 22px;background:#fff}
+.nextcard .n{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500}
+.nextcard h4{font-family:var(--serif);font-size:19px;font-weight:600;margin:9px 0 11px;letter-spacing:-.01em;line-height:1.25}
+.nextcard p{font-size:15px;line-height:1.6;margin:0;max-width:none}
+.nextcard dl{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
+.nextcard dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:13px}
+.nextcard dl > dt:first-child{margin-top:0}
+.nextcard dd{font-size:14px;line-height:1.55;margin:5px 0 0}
+
+/* lists */
+ul.reqs{list-style:none;margin-top:6px}
+ul.reqs li{position:relative;padding-left:26px;margin-bottom:9px;max-width:68ch}
+ul.reqs li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--pale);border:2px solid var(--blue)}
+ol.steps{list-style:none;counter-reset:s;margin-top:6px}
+ol.steps li{counter-increment:s;position:relative;padding-left:44px;margin-bottom:14px;max-width:68ch}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center}
+ol.improve{list-style:none;counter-reset:i;margin-top:6px}
+ol.improve li{counter-increment:i;position:relative;padding-left:30px;margin-bottom:14px;max-width:70ch}
+ol.improve li::before{content:counter(i) ".";position:absolute;left:0;top:0;color:var(--blue);font-weight:600}
+ol.improve b{font-weight:600}
+
+/* callout */
+.numbers{background:var(--navy);color:#E8EEF4;border-radius:12px;padding:26px 28px;margin-top:22px}
+.numbers h4{font-family:var(--serif);font-size:17px;font-weight:600;color:#fff;margin-bottom:14px}
+.numbers ul{list-style:none;display:grid;gap:10px}
+.numbers li{font-size:15px;color:#BACBDC;max-width:62ch}
+.numbers code{font-family:var(--sans);color:#fff;font-weight:600}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
+.tbl th{text-align:left;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--navy);padding:10px 14px 10px 0}
+.tbl td{border-bottom:1px solid var(--line);padding:12px 14px 12px 0;vertical-align:top}
+.tbl td:first-child{font-weight:500;width:27%}
+.tbl td:nth-child(2){color:var(--blue);font-weight:500;white-space:nowrap;width:22%}
+.tbl tr:last-child td{border-bottom:none}
+.scroll{overflow-x:auto}
+
+/* placeholder project */
+.soon{border:2px dashed #B8C6D6;border-radius:12px;background:#F2F6FA;padding:40px 32px;margin-top:28px}
+.soon h3{margin-top:0}
+.soon .skel{height:11px;background:#DCE5EE;border-radius:6px;margin-bottom:11px}
+
+footer{background:var(--navy);color:#9FB6CE;margin-top:90px;padding:48px 0;font-size:15px}
+footer a{color:#CFDDEA}
+.endnote{font-size:13px;color:#7D93AB;margin-top:14px;max-width:60ch}
+
+@media(max-width:600px){
+  header.hero{padding:62px 0 56px}
+  section.project{padding-top:56px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="me">Angelina Aung</span>
+    <ul>
+      <li><a href="#p1">Pill Dispenser</a></li>
+      <li><a href="#p2">IV Line Clip</a></li>
+      <li><a href="#p3">Project 03</a></li>
+      <li><a href="#next">Upcoming</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Mechanical Engineering</div>
+    <h1>Angelina Aung's CAD Portfolio</h1>
+    <p class="lede">I design and prototype assistive medical devices in SolidWorks. I am still learning, and this site is built to show that. Every project lists what went wrong and what I would do better next time, and the last section lists what I want to build once I know how.</p>
+    <div class="meta">
+      <span>UC Berkeley '29</span>
+      <span>SolidWorks, 3D Printing, Mechanisms</span>
+      <span><a href="mailto:angelina_aung@berkeley.edu">angelina_aung@berkeley.edu</a></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="project" id="p1">
+  <div class="ptag">Project 01</div>
+  <h2>One-Handed Pill Dispenser</h2>
+  <p class="tagline">A 7-day pill carousel that lets one press dispense one dose for that day.</p>
+
+  <img class="hero-shot" src="images/dispenser-hero.png" alt="Full assembly of the one handed pill dispenser, shown from an angle with the drawer pulled open and the lid transparent so the seven pocket carousel and the ratchet are visible">
+  <p class="cap">Six printed parts: base, base plate, carousel, lid, slider, drawer. The lid is shown transparent so the carousel and ratchet read through it.</p>
+
+  <h3>The Problem</h3>
+  <p>This is for people with arthritis, a tremor, or the use of only one hand. Pill bottle caps are hard to open with weak or shaky hands, and the pills themselves are small enough that picking one up is its own problem. Weekly organizers help, but you still have to lift the pill out of the compartment, and nothing tells you whether you already took today's dose.</p>
+  <p>I wanted a device you operate with one press, using the whole hand instead of the fingertips.</p>
+
+  <h3>Requirements</h3>
+  <ul class="reqs">
+    <li>Dispense exactly one dose per press</li>
+    <li>Work one handed, including by pressing it against a table</li>
+    <li>Hold seven doses, one for each day</li>
+    <li>Fit pills up to about 12 mm across</li>
+    <li>No small loose parts, no sharp edges, easy to wipe down</li>
+    <li>Print on a standard 3D printer. The only bought part is one compression spring.</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <ol class="steps">
+    <li>The pills sit in seven pockets in a carousel that rotates. Underneath is a fixed plate, solid everywhere except for one exit hole. Six pills are blocked and one can fall.</li>
+    <li>Pressing the slider drives a flexible pawl against one tooth of a seven tooth ratchet, turning the carousel exactly one seventh of a turn.</li>
+    <li>The next pocket lines up with the exit hole and the pill drops down a chute.</li>
+    <li>It lands in a drawer that pulls out from the front. A spring pushes the slider back out, and the pawl flexes over the next tooth on the way.</li>
+  </ol>
+
+  <div class="numbers">
+    <h4>Why the Numbers Are What They Are</h4>
+    <ul>
+      <li>Seven pockets means each press has to turn the carousel <code>360 &divide; 7</code>, which is <code>51.4&deg;</code>.</li>
+      <li>At the tip of the teeth that works out to about <code>11.7 mm</code> of travel. I made the slider stroke <code>14 mm</code> so it definitely clears one tooth but can't reach two.</li>
+      <li>Each tooth only covers <code>45&deg;</code> of that <code>51.4&deg;</code>. The <code>1 mm</code> gap left over gives the pawl a flat to seat on before it catches the next tooth.</li>
+      <li>The fill hole is <code>9.5 mm</code> right and <code>19.8 mm</code> back from the center, which is exactly one pocket position. That way one pocket can dispense while another is being loaded.</li>
+    </ul>
+  </div>
+
+  <h3>Why I Picked These Numbers</h3>
+  <div class="scroll">
+  <table class="tbl">
+    <tr><th>Part</th><th>Size</th><th>Why</th></tr>
+    <tr><td>Pill pocket</td><td>&Oslash;14 at r22</td><td>Fits a 12 mm pill with clearance, but not two side by side</td></tr>
+    <tr><td>Ratchet tooth</td><td>45&deg; of 51.4&deg;</td><td>The leftover gap gives the pawl somewhere to seat, and sharp points don't print cleanly</td></tr>
+    <tr><td>Carousel bore</td><td>&Oslash;6.4 on a &Oslash;6 pin</td><td>0.2 mm each side. Any tighter and a printed part binds.</td></tr>
+    <tr><td>Exit hole</td><td>&Oslash;15 vs &Oslash;14 hole</td><td>Slightly larger so a pill never catches on the lip on the way out</td></tr>
+    <tr><td>Tab and slot</td><td>6.4 mm</td><td>Stops the plate rotating along with the carousel</td></tr>
+    <tr><td>Lid gap</td><td>0.5 mm</td><td>Carousel turns freely, but the gap is too small for a pill to escape</td></tr>
+    <tr><td>Material</td><td>PETG or PLA</td><td>Stiff enough for the flexible pawl, prints without supports</td></tr>
+  </table>
+  </div>
+
+  <div class="grid3">
+    <figure><img class="shot" src="images/dispenser-section.png" alt="Section view of the dispenser, cut through the body to reveal the carousel pockets and the drawer bay underneath"><figcaption>Section through the body, showing the drawer bay under the carousel</figcaption></figure>
+    <figure><img class="shot" src="images/dispenser-exploded.png" alt="Exploded view showing the six parts separated along the stacking axis: lid, carousel, slider, base plate, base and drawer"><figcaption>All six parts, in the order they stack</figcaption></figure>
+    <figure><img class="shot" src="images/dispenser-drawing.png" alt="Dimensioned engineering drawing of the carousel with top, front and isometric views and a title block"><figcaption>Carousel drawing, dimensioned</figcaption></figure>
+  </div>
+
+  <h3>What I'd Improve</h3>
+  <ol class="improve">
+    <li>Nothing holds the carousel when the slider springs back, so it can rotate backwards and lose its position. I would add a second flexible pawl on the lid that clicks into each tooth.</li>
+    <li>The drawer slides out if the device is lifted, because the tunnel is open at the bottom. It needs rails.</li>
+    <li>The front of the drawer is flat but the body is round, so there are gaps about 8 mm wide at the corners. Curving the front to match would close them.</li>
+    <li>The slot for the plate's tab goes all the way through the wall, so you can see a gap from outside. Stopping the cut 1.6 mm short would fix it.</li>
+    <li>I worked out the press force but I haven't measured it. The next step is pressing it onto a scale with a few different springs and comparing the result to my calculation. I am aiming for under 10 N.</li>
+    <li>I have not tested reliability yet. The plan is 100 presses with all seven pockets loaded, counting how often it jams, drops two, or drops none.</li>
+    <li>It is not child resistant. A real product would have to be, and that works against being easy to open one handed. I have not solved both at once yet.</li>
+    <li>Nobody with arthritis has tried it. That feedback would probably change more than any of my calculations.</li>
+  </ol>
+</section>
+
+<section class="project" id="p2">
+  <div class="ptag">Project 02</div>
+  <h2>IV Line Organizer Clip</h2>
+  <p class="tagline">A clip that snaps onto an IV pole and holds five lines in separate slots, so a nurse can identify a line by position instead of tracing it by hand.</p>
+
+  <img class="hero-shot" src="images/clip-hero.png" alt="Angled view of the IV line organizer clip, showing the keyhole channels along the top and the C clamp underneath">
+
+  <h3>The Problem</h3>
+  <p>A patient can have three to five IV lines going at once. They tangle around each other and around the pole. Finding a specific line means tracing it by hand, which takes time a nurse may not have, and a misread line can mean a drug delivered through the wrong route.</p>
+  <p>Separating the lines into fixed positions at one point on the pole makes identification visual instead of manual.</p>
+
+  <h3>Requirements</h3>
+  <ul class="reqs">
+    <li>Hold five lines, each in its own fixed position</li>
+    <li>Let a line be pushed in or pulled out one handed</li>
+    <li>Clip onto a standard IV pole with no tools and no extra parts</li>
+    <li>Never squeeze the tube shut</li>
+    <li>Be smooth with no crevices, so it can be wiped down with disinfectant</li>
+    <li>Be all plastic, so it's light and safe near an MRI</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <ol class="steps">
+    <li>Five keyhole shaped channels go through a 60 by 20 by 12 mm block. Each one is a round bore with a narrower slot at the top.</li>
+    <li>Pushing a line into the slot flexes the plastic open. Once past the narrow neck it snaps into the round bore and sits there without being squeezed.</li>
+    <li>The channels sit at a fixed 12 mm pitch, so a line keeps the same position every time and can be called by number rather than traced.</li>
+    <li>Underneath is a C shaped clamp. The opening is 20 mm and the pole is 25 mm, so the clamp flexes open to go on and then grips.</li>
+  </ol>
+
+  <div class="numbers">
+    <h4>Checking It Against Real Poles</h4>
+    <ul>
+      <li>Standard IV poles have a <code>25 mm</code> lower tube with an <code>18 mm</code> tube that slides out of it. Bigger ICU ones run <code>32 to 34 mm</code>.</li>
+      <li>I targeted the 25 mm lower section because that is where the lines already hang.</li>
+      <li>The <code>20 mm</code> opening is <code>80%</code> of the pole width. That is enough interference to grip without needing a latch.</li>
+      <li>The channels are <code>4.2 mm</code> for roughly 4 mm tubing, with a <code>3.2 mm</code> neck, five of them at a <code>12 mm</code> pitch across the 60 mm block.</li>
+    </ul>
+  </div>
+
+  <h3>Why I Picked These Numbers</h3>
+  <div class="scroll">
+  <table class="tbl">
+    <tr><th>Part</th><th>Size</th><th>Why</th></tr>
+    <tr><td>Channel</td><td>&Oslash;4.2 mm</td><td>Slightly larger than the tube, so it holds without occluding it</td></tr>
+    <tr><td>Snap neck</td><td>3.2 mm</td><td>Narrow enough to retain the tube, wide enough to release one handed</td></tr>
+    <tr><td>Channel pitch</td><td>12 mm</td><td>Five channels across 60 mm, with 6 mm left at each end so the walls stay strong</td></tr>
+    <tr><td>Clamp hole</td><td>&Oslash;25 mm</td><td>Matches the lower tube of a standard pole</td></tr>
+    <tr><td>Clamp opening</td><td>20 mm</td><td>80% of the hole, so it snaps on and stays on</td></tr>
+        <tr><td>Material</td><td>Polypropylene</td><td>Flexes repeatedly without cracking, and tolerates hospital disinfectants</td></tr>
+  </table>
+  </div>
+
+  <div class="grid3">
+    <figure><img class="shot" src="images/clip-front.png" alt="Front view of the clip showing the keyhole channels, each a round bore with a narrower neck above it, and the C-clamp below"><figcaption>Front view. Each channel is a round bore with a narrower neck, so the tube snaps past it and stays.</figcaption></figure>
+    <figure><img class="shot" src="images/clip-drawing.png" alt="Dimensioned engineering drawing of the IV clip with a front view, an isometric view and a title block"><figcaption>Clip drawing, dimensioned</figcaption></figure>
+  </div>
+
+  <h3>What I'd Improve</h3>
+  <ol class="improve">
+    <li>It only fits one size of pole. The 25 mm clamp won't go on the 18 mm top tube or the 32 to 34 mm ICU poles. I would make a family of three sizes, or swap the clamp for a strap that fits anything.</li>
+    <li>I chose 3.2 mm for the neck by reasoning, not testing. The next step is printing 3.0, 3.2 and 3.4 and measuring the pull out force on each.</li>
+    <li>It only fits one tubing size, and real lines are not all the same.</li>
+    <li>There are no markings on it yet. Position alone tells you which line is which, which only works if whoever loaded it and whoever reads it agree on the order. Engraved numbers, or color coding that matches what the hospital already uses, would fix that.</li>
+    <li>I rounded the edges so there would be nowhere for debris to collect, but I have not tested cleaning it. At the moment that is a claim, not a result.</li>
+    <li>Snapping it on and off will crack it eventually, and I do not know after how many cycles. A stress simulation and a cycle test would tell me.</li>
+  </ol>
+</section>
+
+<section class="project" id="p3">
+  <div class="ptag">Project 03</div>
+  <h2>Adjustable Finger Rehab Trainer</h2>
+  <p class="tagline">Four spring loaded plungers, one per finger, with the resistance set separately on each one.</p>
+
+  <img class="hero-shot" src="images/trainer-hero.png" alt="Isometric view of the finger rehab trainer with the housing set transparent, showing all four plungers, springs and adjustment plugs in place">
+
+  <h3>The Problem</h3>
+  <p>After a hand injury or a stroke, fingers do not recover at the same rate. The index finger can be close to normal while the ring finger is still weak. Almost every hand trainer I looked at makes all four fingers push against the same spring, so the strong fingers carry the work and the weak one coasts.</p>
+  <p>A therapist can tell someone to work the weak finger harder, but there is no way to set that on the device. If each finger has its own spring and its own setting, the exercise can be written on a card and repeated the same way at home.</p>
+
+  <h3>Requirements</h3>
+  <ul class="reqs">
+    <li>Four stations, one per finger, each set on its own</li>
+    <li>Adjustable by hand with no tools</li>
+    <li>Repeatable, so a setting can be written down and found again</li>
+    <li>Enough travel to feel like a real press, around 10 mm</li>
+    <li>No small loose parts that could fall out</li>
+    <li>Print on a standard 3D printer. The only bought parts are four compression springs.</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <ol class="steps">
+    <li>Four bores run through a 92 by 28 by 70 mm block, spaced 21 mm apart so they sit under the fingers of a flat hand.</li>
+    <li>Each bore holds a plunger. The top 5 mm of the bore is narrower than the rest, and the body of the plunger is wider than that, so the plunger is captive and cannot be pushed or pulled out.</li>
+    <li>A compression spring sits underneath and pushes the plunger back up after every press.</li>
+    <li>Below the spring is a threaded plug. Screwing it in squeezes the spring and makes the press harder. Backing it out makes the press lighter. The plug sits proud of the block, so the setting is visible without taking anything apart.</li>
+  </ol>
+
+  <div class="numbers">
+    <h4>Why the Numbers Are What They Are</h4>
+    <ul>
+      <li>The plunger cap floats <code>11 mm</code> above the block at rest, and that gap is the travel. Press it flat and the cap lands on the top face, which is the stop.</li>
+      <li>The spring is <code>35 mm</code> free and the gap it has to fill at rest is <code>33 mm</code>, so it carries <code>2 mm</code> of preload. That is what stops the plunger rattling when nobody is touching it.</li>
+      <li>Pressed all the way down the gap closes to <code>22 mm</code>. Ten coils of 1.5 mm wire stack solid at <code>15 mm</code>, so there is <code>7 mm</code> left over and the spring can never bind.</li>
+      <li>At a rate of <code>0.5 N/mm</code> that is <code>1 N</code> at rest and <code>6.5 N</code> fully pressed.</li>
+      <li>The plug is M16 x 2, so one turn moves it <code>2 mm</code> and adds about <code>1 N</code>. One turn, one newton, is simple enough to tell someone over the phone.</li>
+    </ul>
+  </div>
+
+  <h3>Why I Picked These Numbers</h3>
+  <div class="scroll">
+  <table class="tbl">
+    <tr><th>Part</th><th>Size</th><th>Why</th></tr>
+    <tr><td>Station pitch</td><td>21 mm</td><td>Four bores across 92 mm leaves 14.5 mm of material at each end</td></tr>
+    <tr><td>Bore</td><td>&Oslash;13.6</td><td>0.3 mm each side on the &Oslash;13 plunger. Any tighter and a printed part binds.</td></tr>
+    <tr><td>Lip</td><td>&Oslash;12.4 for 5 mm</td><td>Narrower than the plunger body, so the plunger stays captive</td></tr>
+    <tr><td>Plug thread</td><td>M16 x 2</td><td>2 mm per turn gives roughly 1 N per turn, and it is coarse enough to tap into plastic</td></tr>
+    <tr><td>Tap hole</td><td>&Oslash;14.2 for 15 mm</td><td>The tap drill size for M16 x 2, so the thread is cut after printing</td></tr>
+    <tr><td>Spring</td><td>&Oslash;12 OD, 35 free</td><td>Free length over mean diameter is 3.3, under the 4 where a spring buckles sideways</td></tr>
+    <tr><td>Plug knob</td><td>&Oslash;18</td><td>Leaves 3 mm between neighboring knobs at a 21 mm pitch</td></tr>
+    <tr><td>Material</td><td>PLA or PETG</td><td>Stiff enough for the plunger to slide cleanly, prints without supports</td></tr>
+  </table>
+  </div>
+
+  <div class="grid3">
+    <figure><img class="shot fit" src="images/trainer-section.png" alt="Front view of the trainer with the housing transparent, showing each plunger sitting on its spring above a threaded plug"><figcaption>Front view with the housing set transparent. You can see the spring stack and how far each plug is screwed in.</figcaption></figure>
+    <figure><img class="shot fit" src="images/trainer-exploded.png" alt="Exploded view separating the four plungers, four springs, the housing and the four adjustment plugs"><figcaption>Thirteen parts in total. Four plungers, four springs, four plugs and one housing.</figcaption></figure>
+  </div>
+
+  <h3>What I'd Improve</h3>
+  <ol class="improve">
+    <li>I drew the plug knobs at &Oslash;22 and the stations are 21 mm apart, so neighboring knobs overlapped by 1 mm. The part files looked fine on their own. It only showed up once everything was mated, and I took the knobs down to &Oslash;18 to fix it.</li>
+    <li>The plunger guide is 20 mm long in a 13.6 mm bore, a ratio of 1.47. The usual rule is to stay above 1.5, so pressing off center could make it cock and jam the way a drawer binds when you pull one corner. Lengthening the guide to 28 mm takes it to 2.1 and costs nothing but bore depth.</li>
+    <li>0.3 mm of clearance per side is tight for FDM. Bores print undersized and the first layer flares out, so in practice these would need reaming before anything slid.</li>
+    <li>Printed M16 threads would not survive being adjusted over and over. I sized the hole for a tap so the thread is cut properly after printing, but a brass insert would outlast that.</li>
+    <li>Three millimeters between knobs clears, but it is tight to pinch, which is a problem on a device aimed at people with weak hands. A slot across the knob face turned with a coin would be easier.</li>
+    <li>Nothing locks the plug once it is set. Repeated pressing could slowly back it out and change the resistance without the user noticing. A nylon washer or a detent would hold it.</li>
+    <li>I calculated the spring rate, I have not measured it. The next step is pressing one plunger onto a kitchen scale at several plug settings and checking whether one turn really is one newton.</li>
+    <li>No therapist or patient has touched it. That feedback would probably move the layout more than any number on this page.</li>
+  </ol>
+</section>
+
+
+<section class="project" id="next">
+  <div class="ptag">What Comes Next</div>
+  <h2>Upcoming Work</h2>
+  <p class="tagline">Three projects I have not built yet. I picked each one because it needs a skill I do not have, which is the only reason worth picking a project at this point.</p>
+
+  <div class="nextgrid">
+
+    <div class="nextcard">
+      <div class="n">Next 01</div>
+      <h4>Four Bar Linkage Prosthetic Finger</h4>
+      <p>A finger that closes from a single tendon pull, where the knuckle and the fingertip rotate in the right proportion because of the linkage geometry rather than because something drives each joint separately.</p>
+      <dl>
+        <dt>Why it is harder</dt>
+        <dd>Everything on this site so far holds still. This one has to move correctly, and the link lengths come out of synthesis rather than from picking a number and checking it afterward.</dd>
+        <dt>What I need to learn</dt>
+        <dd>Four bar synthesis, SolidWorks Motion to trace the fingertip path, and how to keep the linkage from locking at the ends of its travel.</dd>
+      </dl>
+    </div>
+
+    <div class="nextcard">
+      <div class="n">Next 02</div>
+      <h4>Compliant Surgical Grasper</h4>
+      <p>A laparoscopic grasper printed as one piece, with sections designed to flex instead of pins and pivots, so there are no joints to trap tissue or to seize up after autoclaving.</p>
+      <dl>
+        <dt>Why it is harder</dt>
+        <dd>There are no clearances to design, because there are no sliding parts. It works only if the right region bends by the right amount, so the geometry and the material behavior stop being separate problems.</dd>
+        <dt>What I need to learn</dt>
+        <dd>Flexure design, simulation to find where stress concentrates, and fatigue life, because a hinge that survives one squeeze is not the same as one that survives ten thousand.</dd>
+      </dl>
+    </div>
+
+    <div class="nextcard">
+      <div class="n">Next 03</div>
+      <h4>Microfluidic Mixing Chip</h4>
+      <p>A chip with channels a few tenths of a millimeter across that mixes two reagents on its way to a detection window, together with the mold tool it would be cast from.</p>
+      <dl>
+        <dt>Why it is harder</dt>
+        <dd>At that scale fluid does not swirl, it travels in neat parallel layers, so mixing has to be forced by the shape of the channel itself. The tolerances are also an order of magnitude tighter than anything I have modeled.</dd>
+        <dt>What I need to learn</dt>
+        <dd>Why flow stays layered at that scale, staggered herringbone channel geometry, and how to draft a mold so the cast part actually releases.</dd>
+      </dl>
+    </div>
+
+  </div>
+  <p class="cap">I would rather list these honestly than pad the site with practice parts. Each will get the same treatment as the projects above once it exists, including the part where I say what went wrong.</p>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p style="color:#E3EBF2;font-family:var(--serif);font-size:22px;margin-bottom:10px">Get in Touch</p>
+    <p><a href="mailto:angelina_aung@berkeley.edu">angelina_aung@berkeley.edu</a> &middot; UC Berkeley '29</p>
+    <p class="endnote">Everything here was designed in SolidWorks. The numbers are what I designed to, not what I've measured, and I'll update them once I've tested.</p>
+  </div>
+</footer>
+
+</body>
+</html>
