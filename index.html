@@ -110,6 +110,36 @@ footer a{color:#CFDDEA}
   header.hero{padding:62px 0 56px}
   section.project{padding-top:56px}
 }
+
+/* print and PDF */
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{size:A4;margin:15mm 15mm 17mm}
+  nav{display:none !important}
+  body{font-size:10.5pt;background:#fff}
+  header.hero{background:#fff;color:var(--ink);padding:0 0 10mm}
+  header.hero h1{font-size:29pt;max-width:none;color:var(--navy)}
+  header.hero .eyebrow{color:var(--blue)}
+  header.hero p.lede{color:var(--muted);font-size:11.5pt;max-width:none}
+  header.hero .meta{color:var(--muted);margin-top:18px}
+  header.hero .meta a{color:var(--blue)}
+  section.project{break-before:page;padding:0;border-top:none}
+  h2{font-size:19pt;margin-top:0}
+  h3{font-size:12.5pt;margin:20px 0 8px;break-after:avoid}
+  h4{break-after:avoid}
+  p,li{orphans:3;widows:3;max-width:none}
+  figure,table,.numbers,.nextcard,ul.reqs li,ol.steps li,ol.improve li{break-inside:avoid}
+  img.hero-shot{max-height:88mm;object-fit:contain;margin:14px 0 4px}
+  img.shot,img.shot.fit{max-height:62mm;object-fit:contain}
+  .grid3{grid-template-columns:1fr 1fr;gap:12px}
+  .nextgrid{grid-template-columns:1fr;gap:12px}
+  .nextcard{border:1px solid var(--line)}
+  .scroll{overflow:visible}
+  .tbl{font-size:9.5pt}
+  footer#contact{break-before:page;background:#fff;color:var(--ink);padding:0}
+  footer#contact p{color:var(--ink) !important}
+  footer#contact a{color:var(--blue)}
+}
 </style>
 </head>
 <body>
